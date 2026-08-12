@@ -20,6 +20,7 @@
 - [Quick Start](#quick-start)
 - [API Reference](#api-reference)
 - [Installation](#installation)
+- [Documentation](#documentation)
 - [Platform Support](#platform-support)
 - [License](#license)
 
@@ -101,6 +102,17 @@ Add the JitPack repository and dependencies to your `pom.xml`:
     </dependency>
 </dependencies>
 ```
+
+---
+
+## Documentation
+
+* **[Description.md](docs/Description.md)**: Architectural overview and core module capabilities.
+* **[COMPILE.md](docs/COMPILE.md)**: Full compilation guide (MSVC C++17 build chain + JNI Setup).
+* **[REFERENCE.md](docs/REFERENCE.md)**: Full API descriptions and technical method specifications.
+* **[PHILOSOPHY.md](docs/PHILOSOPHY.md)**: Engineering rationale for zero-allocation performance.
+* **[ROADMAP.md](docs/ROADMAP.md)**: Future milestones and planned features.
+* **[CHANGELOG.md](docs/CHANGELOG.md)**: Version history and release notes.
 
 ---
 
