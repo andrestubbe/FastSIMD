@@ -105,6 +105,21 @@ Add the JitPack repository and dependencies to your `pom.xml`:
 
 ---
 
+## Technical Examples & Benchmarks
+
+See the `examples/` directory for interactive technical implementations and official JMH benchmarks:
+
+| Benchmark Case | Description | Java Example | JMH Benchmark |
+|---|---|---|---|
+| **SIMD Parallel Search** | 32-byte parallel delimiter matching (`_mm256_cmpeq_epi8`) vs Java loop | [Demo.java](examples/Demo.java) | [JMH_SIMD.java](examples/src/main/java/fastsimd/benchmark/JMH_SIMD.java) |
+
+### Run JMH Benchmarks via Script
+```cmd
+run-benchmark.bat
+```
+
+---
+
 ## Documentation
 
 * **[Description.md](docs/Description.md)**: Architectural overview and core module capabilities.
@@ -123,6 +138,15 @@ Add the JitPack repository and dependencies to your `pom.xml`:
 | Windows 10/11 (AVX2 / x64) | ✅ Fully Supported |
 | Linux (AVX2 / x64) | 🚧 Planned |
 | macOS (Apple Silicon NEON) | 🚧 Planned |
+
+---
+
+## Related Projects
+
+- [FastBytes](https://github.com/andrestubbe/FastBytes) — High-performance SIMD-powered byte engine
+- [FastMemory](https://github.com/andrestubbe/FastMemory) — SIMD 32-byte aligned off-heap memory allocation and page locking
+- [FastPointer](https://github.com/andrestubbe/FastPointer) — Zero-overhead native address arithmetic
+- [FastCore](https://github.com/andrestubbe/FastCore) — Native JNI loader for FastJava libraries
 
 ---
 
