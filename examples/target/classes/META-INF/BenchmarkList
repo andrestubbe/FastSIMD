@@ -1,0 +1,2 @@
+JMH S 27 fastsimd.benchmark.JMH_SIMD S 76 fastsimd.benchmark.jmh_generated.JMH_SIMD_testFastSIMDParallelSearch_jmhTest S 26 testFastSIMDParallelSearch S 10 Throughput E A 1 1 1 E I 1 2 T 3 1 s E I 1 3 T 3 1 s E I 1 1 E E E E E M 1 4 size 1 24 xAAMAQDA4AQNAcDA2AAMAA== U 7 SECONDS E E 
+JMH S 27 fastsimd.benchmark.JMH_SIMD S 64 fastsimd.benchmark.jmh_generated.JMH_SIMD_testJavaSearch_jmhTest S 14 testJavaSearch S 10 Throughput E A 1 1 1 E I 1 2 T 3 1 s E I 1 3 T 3 1 s E I 1 1 E E E E E M 1 4 size 1 24 xAAMAQDA4AQNAcDA2AAMAA== U 7 SECONDS E E 
