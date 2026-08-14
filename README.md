@@ -1,4 +1,4 @@
-# FastSIMD 0.1.2 [ALPHA] — Hardware Vectorization Framework (AVX2, AVX-512, NEON)
+# FastSIMD 0.1.2 [ALPHA-2026-08] — Hardware Vectorization Framework (AVX2, AVX-512, NEON)
 
 [![Status](https://img.shields.io/badge/status-0.1.2-brightgreen.svg)](https://github.com/andrestubbe/FastSIMD/releases/tag/0.1.2)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
