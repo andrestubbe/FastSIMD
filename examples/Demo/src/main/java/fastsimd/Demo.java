@@ -53,9 +53,8 @@ public class Demo {
 
         for (int chunk = 1; chunk <= 4; chunk++) {
             long chunkBytes = (long) (size / 4) * chunk;
-            Pointer chunkPtr = Pointer.of(mem.address());
             long t0 = System.nanoTime();
-            int pos = SIMD.findByte(chunkPtr, chunkBytes, (byte) 0x77);
+            int pos = SIMD.findByte(ptr, chunkBytes, (byte) 0x77);
             long ns = System.nanoTime() - t0;
 
             String status = pos != -1 ? "🎯 MATCH FOUND at offset 0x" + Integer.toHexString(pos).toUpperCase() : "⏳ Scanning...";
@@ -65,30 +64,34 @@ public class Demo {
         }
 
         System.out.println();
-        System.out.println("🚀 [3/4] 256-Bit SIMD Memory Copy vs Scalar Loop Benchmark");
-        Memory destMem = Memory.allocate(size);
-        Pointer destPtr = Pointer.of(destMem.address());
+        System.out.println("🚀 [3/4] AVX2 256-Bit SIMD Search vs Java Scalar Loop Benchmark");
 
-        // AVX2 SIMD Copy
+        // AVX2 SIMD Search
         long tSimd = System.nanoTime();
-        SIMD.copy(ptr, destPtr, size);
+        int simdPos = SIMD.findByte(ptr, size, (byte) 0x77);
         long simdNs = System.nanoTime() - tSimd;
         double simdGbs = (size / (1024.0 * 1024.0 * 1024.0)) / (simdNs / 1e9);
 
-        // Scalar Fallback Copy
+        // Java Scalar Byte Loop
         long tScalar = System.nanoTime();
-        UNSAFE.copyMemory(null, mem.address(), null, destMem.address(), size);
+        int scalarPos = -1;
+        long baseAddr = mem.address();
+        for (int i = 0; i < size; i++) {
+            if (UNSAFE.getByte(baseAddr + i) == (byte) 0x77) {
+                scalarPos = i;
+                break;
+            }
+        }
         long scalarNs = System.nanoTime() - tScalar;
         double scalarGbs = (size / (1024.0 * 1024.0 * 1024.0)) / (scalarNs / 1e9);
 
-        System.out.printf("   ⚡ AVX2 256-Bit Vector Copy : %6.2f ms | Bandwidth: %6.2f GB/sec%n", simdNs / 1e6, simdGbs);
-        System.out.printf("   ⚙️ Standard Unsafe Copy     : %6.2f ms | Bandwidth: %6.2f GB/sec%n", scalarNs / 1e6, scalarGbs);
+        System.out.printf("   ⚡ AVX2 256-Bit SIMD Search : %6.2f ms | Speed: %6.2f GB/sec%n", simdNs / 1e6, simdGbs);
+        System.out.printf("   ⚙️ Java Scalar Byte Loop   : %6.2f ms | Speed: %6.2f GB/sec%n", scalarNs / 1e6, scalarGbs);
         System.out.printf("   🏆 Hardware Speedup Factor  : %.2fx Faster%n", (double) scalarNs / Math.max(simdNs, 1));
 
         System.out.println();
         System.out.println("🔒 [4/4] Releasing 64 MB Aligned Vector Memory");
         mem.free();
-        destMem.free();
 
         System.out.println("==========================================================================");
         System.out.println("✅ FastSIMD Interactive Action Demo Completed Successfully!");
