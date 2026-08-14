@@ -11,10 +11,15 @@ public final class FastSIMDNative {
 
     static {
         try {
-            FastCore.loadLibrary("FastSIMD", FastSIMDNative.class);
+            FastCore.loadLibrary("fastsimd", FastSIMDNative.class);
             loaded = true;
         } catch (Throwable t) {
-            loaded = false;
+            try {
+                FastCore.loadLibrary("FastSIMD", FastSIMDNative.class);
+                loaded = true;
+            } catch (Throwable t2) {
+                loaded = false;
+            }
         }
     }
 
