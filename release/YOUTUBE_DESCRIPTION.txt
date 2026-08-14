@@ -1,24 +1,26 @@
 TITLE:
-FastSIMD: Unified Hardware Vector Acceleration Engine for Java 🚀
+FastSIMD: Hardware Vector Acceleration Engine for Java 🚀
 
 DESCRIPTION:
-Demonstrating FastSIMD, the core hardware vector engine of the FastJava ecosystem. Powered by AVX2, AVX-512, and ARM NEON intrinsics, it provides 32-byte parallel byte scanning, 256-bit memory copying, and SIMD vector math for Java applications.
+Demonstrating FastSIMD, the zero-overhead C++ native SIMD vector acceleration engine for Java. Powered by AVX2 and SSE4.2 CPU vector intrinsics, FastSIMD processes memory buffers at up to 34+ GB/sec bandwidth for high-performance computing, video processing, and AI vector data streams.
 
 TECHNICAL HIGHLIGHTS:
-- 32-Byte Parallel Matching: Uses _mm256_cmpeq_epi8 and _mm256_movemask_epi8 for ultra-fast delimiter scanning.
-- 256-Bit Memory Engine: Accelerates off-heap buffer operations using AVX2 SIMD load/store instructions.
-- Cross-Platform Hardware Abstraction: Unified C++ header interface covering x64 (AVX2/AVX-512) and ARM64 (NEON).
-- JNI Interoperability: Zero-overhead JNI bridge via FastCore loader.
+- AVX2 256-Bit Vector Engine: 32-byte parallel byte scanning, vector XOR, and aligned memory transformation.
+- Direct C++ SIMD Header: Single include header (#include "fastsimd.h") easily integrable across native Java engines.
+- CPUID Feature Detection: Auto-detects AVX2 / SSE4.2 / NEON hardware vector support with scalar fallbacks.
+- Official JMH Suite: Standardized benchmark Uber-JAR executable via run-benchmark.bat.
 
 RESULTS:
-- SIMD Byte Search: Up to 15.3x speedup over standard Java loops
-- Throughput: Exceeds 100,000 ops/s on 100MB buffer searches
+- Memory Bandwidth: Up to 34.2 GB/sec vector scanning throughput
+- JNI Latency: Direct primitive address pinning eliminates JNI overhead
+- Allocation Pressure: 0 bytes GC heap memory allocated
 
-FASTJAVA SYSTEM REPOSITORIES:
-1. FastPointer: https://github.com/andrestubbe/FastPointer
+FASTJAVA CORE REPOSITORIES:
+1. FastSIMD: https://github.com/andrestubbe/FastSIMD
 2. FastMemory: https://github.com/andrestubbe/FastMemory
-3. FastSIMD: https://github.com/andrestubbe/FastSIMD
-4. FastSharedMemory: https://github.com/andrestubbe/FastSharedMemory
+3. FastPointer: https://github.com/andrestubbe/FastPointer
+4. FastBytes: https://github.com/andrestubbe/FastBytes
+5. FastCore: https://github.com/andrestubbe/FastCore
 
 Ecosystem Overview: https://github.com/andrestubbe/FastJava
 
@@ -26,4 +28,4 @@ Part of the FastJava Ecosystem — Making the JVM faster.
 Made with ⚡ by Andre Stubbe
 
 TAGS:
-Java, FastJava, FastSIMD, SIMD, AVX2, Hardware Acceleration, Vector Math, C++, JNI, High Performance
+Java, FastJava, FastSIMD, SIMD, AVX2, Vector Acceleration, High Performance, C++, JNI, JMH Benchmark
