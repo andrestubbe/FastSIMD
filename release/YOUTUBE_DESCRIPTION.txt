@@ -2,7 +2,7 @@ TITLE:
 FastSIMD 0.1.3 [ALPHA-2026-08]: Hardware Vector Acceleration Engine for Java 🚀
 
 DESCRIPTION:
-Demonstrating FastSIMD, the zero-overhead C++ native SIMD vector acceleration engine for Java. Powered by MSVC AVX2 (256-bit) and SSE4.2 CPU vector intrinsics, FastSIMD processes memory buffers at up to 9.6–28.4+ GB/sec search throughput, achieving 7.8x–10.6x speedups over standard Java loops.
+Demonstrating FastSIMD, the zero-overhead C++ native SIMD vector acceleration engine for Java. Powered by MSVC AVX2 (256-bit) and SSE4.2 CPU vector intrinsics, FastSIMD processes memory buffers at up to 9.6–28.4+ GB/sec search throughput, achieving 15.02x speedup over standard Java loops.
 
 TECHNICAL HIGHLIGHTS:
 - AVX2 256-Bit Vector Engine: 32-byte parallel byte scanning (`_mm256_cmpeq_epi8`), vector copy, and aligned memory transformations.
@@ -12,7 +12,7 @@ TECHNICAL HIGHLIGHTS:
 
 RESULTS:
 - AVX2 Vector Search Throughput: 9.60 GB/sec (up to 28.48 GB/sec peak)
-- Hardware Speedup Factor: 7.8x – 10.6x faster than standard Java scalar loops
+- Hardware Speedup Factor: up to 15.02x faster than standard Java scalar loops
 - GC Heap Allocation Pressure: 0 bytes memory allocated
 
 FASTJAVA CORE REPOSITORIES:
