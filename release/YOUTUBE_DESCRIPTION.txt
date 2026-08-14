@@ -1,26 +1,27 @@
 TITLE:
-FastSIMD: Hardware Vector Acceleration Engine for Java 🚀
+FastSIMD 0.1.3 [ALPHA-2026-08]: Hardware Vector Acceleration Engine for Java 🚀
 
 DESCRIPTION:
-Demonstrating FastSIMD, the zero-overhead C++ native SIMD vector acceleration engine for Java. Powered by AVX2 and SSE4.2 CPU vector intrinsics, FastSIMD processes memory buffers at up to 34+ GB/sec bandwidth for high-performance computing, video processing, and AI vector data streams.
+Demonstrating FastSIMD, the zero-overhead C++ native SIMD vector acceleration engine for Java. Powered by MSVC AVX2 (256-bit) and SSE4.2 CPU vector intrinsics, FastSIMD processes memory buffers at up to 9.6–28.4+ GB/sec search throughput, achieving 7.8x–10.6x speedups over standard Java loops.
 
 TECHNICAL HIGHLIGHTS:
-- AVX2 256-Bit Vector Engine: 32-byte parallel byte scanning, vector XOR, and aligned memory transformation.
-- Direct C++ SIMD Header: Single include header (#include "fastsimd.h") easily integrable across native Java engines.
-- CPUID Feature Detection: Auto-detects AVX2 / SSE4.2 / NEON hardware vector support with scalar fallbacks.
-- Official JMH Suite: Standardized benchmark Uber-JAR executable via run-benchmark.bat.
+- AVX2 256-Bit Vector Engine: 32-byte parallel byte scanning (`_mm256_cmpeq_epi8`), vector copy, and aligned memory transformations.
+- Live Multi-Chunk Stream Scanning: Real-time 64 MB off-heap memory buffer scanning with instant pattern match location.
+- CPUID Hardware Feature Detection: Auto-detects AVX2 / SSE4.2 / NEON vector extensions with zero-overhead fallback paths.
+- Standalone JMH Benchmark Suite: Standardized benchmark Uber-JAR executable via `run-benchmark.bat`.
 
 RESULTS:
-- Memory Bandwidth: Up to 34.2 GB/sec vector scanning throughput
-- JNI Latency: Direct primitive address pinning eliminates JNI overhead
-- Allocation Pressure: 0 bytes GC heap memory allocated
+- AVX2 Vector Search Throughput: 9.60 GB/sec (up to 28.48 GB/sec peak)
+- Hardware Speedup Factor: 7.8x – 10.6x faster than standard Java scalar loops
+- GC Heap Allocation Pressure: 0 bytes memory allocated
 
 FASTJAVA CORE REPOSITORIES:
 1. FastSIMD: https://github.com/andrestubbe/FastSIMD
 2. FastMemory: https://github.com/andrestubbe/FastMemory
 3. FastPointer: https://github.com/andrestubbe/FastPointer
 4. FastBytes: https://github.com/andrestubbe/FastBytes
-5. FastCore: https://github.com/andrestubbe/FastCore
+5. FastSharedMemory: https://github.com/andrestubbe/FastSharedMemory
+6. FastCore: https://github.com/andrestubbe/FastCore
 
 Ecosystem Overview: https://github.com/andrestubbe/FastJava
 
@@ -28,4 +29,4 @@ Part of the FastJava Ecosystem — Making the JVM faster.
 Made with ⚡ by Andre Stubbe
 
 TAGS:
-Java, FastJava, FastSIMD, SIMD, AVX2, Vector Acceleration, High Performance, C++, JNI, JMH Benchmark
+Java, FastJava, FastSIMD, SIMD, AVX2, Hardware Vector Acceleration, High Performance, Low Latency, Off Heap, C++, JNI, JMH Benchmark
