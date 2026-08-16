@@ -49,10 +49,11 @@ public class Demo {
 
 ## Table of Contents
 
+- [Why FastSIMD?](#why-fastsimd)
 - [Key Features](#key-features)
 - [Real-World Use Cases](#real-world-use-cases)
 - [Performance Benchmarks](#performance-benchmarks)
-- [Quick Start](#quick-start)
+- [FastJava Native Memory Substrate](#fastjava-native-memory--hardware-substrate)
 - [API Reference](#api-reference)
 - [Installation](#installation)
 - [Documentation](#documentation)
@@ -61,12 +62,22 @@ public class Demo {
 
 ---
 
+## Why FastSIMD?
+
+Standard Java loops process arrays sequentially byte-by-byte or rely on unpredictable JIT auto-vectorization that often fails on complex branching. `FastSIMD` provides:
+
+- **Explicit 256-Bit AVX2 Vector Acceleration** — Process 32 bytes or 8 single-precision floats per CPU cycle using native SIMD intrinsics (`_mm256_cmpeq_epi8`, `_mm256_movemask_epi8`).
+- **28+ GB/sec Scan Bandwidth** — Execute ultra-fast log scanning, string searching, and delimiter matching at pure CPU memory bus speeds (15x faster than standard Java loops).
+- **Zero-Allocation Hardware Intrinsics** — Perform bulk memory transfers, vector math, and byte sweeps directly on off-heap native memory pointers without triggering Garbage Collector pauses.
+
+---
+
 ## Key Features
 
 - **🔍 SIMD Scan**: 32-byte parallel delimiter & byte searching (`_mm256_cmpeq_epi8`, `_mm256_movemask_epi8`).
 - **⚡ Bulk Memory & Prefetching**: 256-bit unaligned/aligned loads/stores and cache prefetching.
 - **🔢 Vector Math**: 8-way Float32 and 4-way Float64 SIMD arithmetic for 3D and matrix operations.
-- **🎨 Pixel & Convert**: Farbraum-Konvertierung (RGBA <-> BGRA) und Float↔Int Konvertierungen.
+- **🎨 Pixel & Convert**: Color space conversion (RGBA <-> BGRA) and Float↔Int transformations.
 
 ---
 
@@ -87,7 +98,18 @@ Benchmark                                    Mode  Cnt      Score   Error  Units
 JMH_SIMD.benchmarkAVX2FindByte               thrpt    2  19632.158          ops/s
 ```
 
-> **28.48 GB/sec Bandwidth**: `FastSIMD` processes memory streams with AVX2 vector intrinsics up to **15.02x faster** than standard Java loops with zero GC heap allocation.
+---
+
+## FastJava Native Memory & Hardware Substrate
+
+`FastSIMD` is part of the core **FastJava Low-Level Native Memory Substrate**, designed to grant Java applications raw C++ speed and direct hardware access:
+
+| Substrate Module | Role & Key Capability |
+| :--- | :--- |
+| **`FastSIMD`** | **AVX2 / Vector Acceleration** — 256-bit SIMD hardware vectorization for memory scanning, math operations, and array sweeps. |
+| **`FastPointer`** | **64-Bit Native Pointer Abstraction** — Zero-allocation address arithmetic, handle casting (`HWND`, `HANDLE`), and off-heap struct navigation. |
+| **`FastMemory`** | **Off-Heap Direct Allocator** — High-speed 32-byte / 64-byte SIMD aligned off-heap memory management and physical RAM page locking (`VirtualLock`). |
+| **`FastSharedMemory`** | **Zero-Copy IPC Substrate** — Ultra-fast inter-process shared memory buffers between Java processes and native C++ services. |
 
 ---
 
