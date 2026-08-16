@@ -106,10 +106,10 @@ JMH_SIMD.benchmarkAVX2FindByte               thrpt    2  19632.158          ops/
 
 | Substrate Module | Role & Key Capability |
 | :--- | :--- |
-| **`FastSIMD`** | **AVX2 / Vector Acceleration** — 256-bit SIMD hardware vectorization for memory scanning, math operations, and array sweeps. |
-| **`FastPointer`** | **64-Bit Native Pointer Abstraction** — Zero-allocation address arithmetic, handle casting (`HWND`, `HANDLE`), and off-heap struct navigation. |
-| **`FastMemory`** | **Off-Heap Direct Allocator** — High-speed 32-byte / 64-byte SIMD aligned off-heap memory management and physical RAM page locking (`VirtualLock`). |
-| **`FastSharedMemory`** | **Zero-Copy IPC Substrate** — Ultra-fast inter-process shared memory buffers between Java processes and native C++ services. |
+| **[`FastSIMD`](https://github.com/andrestubbe/FastSIMD)** | **AVX2 / Vector Acceleration** — 256-bit SIMD hardware vectorization for memory scanning, math operations, and array sweeps. |
+| **[`FastPointer`](https://github.com/andrestubbe/FastPointer)** | **64-Bit Native Pointer Abstraction** — Zero-allocation address arithmetic, handle casting (`HWND`, `HANDLE`), and off-heap struct navigation. |
+| **[`FastMemory`](https://github.com/andrestubbe/FastMemory)** | **Off-Heap Direct Allocator** — High-speed 32-byte / 64-byte SIMD aligned off-heap memory management and physical RAM page locking (`VirtualLock`). |
+| **[`FastSharedMemory`](https://github.com/andrestubbe/FastSharedMemory)** | **Zero-Copy IPC Substrate** — Ultra-fast inter-process shared memory buffers between Java processes and native C++ services. |
 
 ---
 
