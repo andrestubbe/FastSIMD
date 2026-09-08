@@ -12,6 +12,8 @@
 
 `FastSIMD` provides a unified SIMD abstraction layer for Java. It encapsulates 32-byte parallel delimiter matching, bulk memory transfers, vector math, and pixel format conversions using hardware intrinsics.
 
+Watch Demo (YouTube) | Watch JMH Benchmark (YouTube)
+
 ![Showcase](https://raw.githubusercontent.com/andrestubbe/FastSIMD/main/docs/screenshot.png)
 
 ---
