@@ -57,6 +57,7 @@ public class Demo {
 - [FastJava Native Memory Substrate](#fastjava-native-memory--hardware-substrate)
 - [API Quick Reference](#api-quick-reference)
 - [Installation](#installation)
+- [Technical Demos & Benchmarks](#technical-demos--benchmarks)
 - [Documentation](#documentation)
 - [Platform Support](#platform-support)
 - [License](#license)
@@ -198,18 +199,12 @@ Download the latest JARs directly to add them to your classpath:
 
 ---
 
-## Technical Examples & Benchmarks
+## Technical Demos & Benchmarks
 
-See the `examples/` directory for interactive technical implementations and official JMH benchmarks:
-
-| Benchmark Case | Description | Java Example | JMH Benchmark |
+| Case | Java Example | Launcher | Description |
 |---|---|---|---|
-| **SIMD Parallel Search** | 32-byte parallel delimiter matching (`_mm256_cmpeq_epi8`) vs Java loop | [Demo.java](examples/Demo.java) | [JMH_SIMD.java](examples/src/main/java/fastsimd/benchmark/JMH_SIMD.java) |
-
-### Run JMH Benchmarks via Script
-```cmd
-run-benchmark.bat
-```
+| **AVX2 SIMD Parallel Search** | [Demo.java](examples/Demo.java) | `run-demo.bat` | End-to-end 100 MB streaming comparison matching delimiters via 256-bit AVX2 vector instructions vs scalar Java loops. |
+| **JMH Microbenchmark Suite** | [Benchmark.java](examples/Benchmark/src/main/java/fastsimd/benchmark/Benchmark.java) | `run-benchmark.bat` | OpenJDK JMH throughput & latency test suite for SIMD byte scanning and vectorized off-heap memory copies. |
 
 ---
 

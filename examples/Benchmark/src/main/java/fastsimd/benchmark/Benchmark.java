@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 @Fork(1)
 @Warmup(iterations = 2, time = 1)
 @Measurement(iterations = 3, time = 1)
-public class JMH_SIMD {
+public class Benchmark {
 
     private Memory srcMem;
     private Memory dstMem;
@@ -33,12 +33,12 @@ public class JMH_SIMD {
         dstMem.free();
     }
 
-    @Benchmark
+    @org.openjdk.jmh.annotations.Benchmark
     public int testSIMDFindByteScan() {
         return SIMD.findByte(srcPtr, 1024 * 1024, (byte) 0xFF);
     }
 
-    @Benchmark
+    @org.openjdk.jmh.annotations.Benchmark
     public void testSIMDVectorCopy() {
         SIMD.copy(srcPtr, dstPtr, 1024 * 1024);
     }
