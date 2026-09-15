@@ -47,16 +47,15 @@ public class Demo {
 
 ---
 
----
-
 ## Table of Contents
 
 - [Why FastSIMD?](#why-fastsimd)
+- [Quick Start](#quick-start)
 - [Key Features](#key-features)
 - [Real-World Use Cases](#real-world-use-cases)
 - [Performance Benchmarks](#performance-benchmarks)
 - [FastJava Native Memory Substrate](#fastjava-native-memory--hardware-substrate)
-- [API Reference](#api-reference)
+- [API Quick Reference](#api-quick-reference)
 - [Installation](#installation)
 - [Documentation](#documentation)
 - [Platform Support](#platform-support)
@@ -115,12 +114,13 @@ JMH_SIMD.benchmarkAVX2FindByte               thrpt    2  19632.158          ops/
 
 ---
 
-## API Reference
+## API Quick Reference
 
-### `SIMD`
-- `SIMD.findByte(Pointer ptr, long length, byte target)`: Scans memory 32 bytes per cycle for target byte.
-- `SIMD.copy(Pointer src, Pointer dst, long bytes)`: SIMD-accelerated 256-bit memory copy.
-- `SIMD.isAVX2Supported()`: Returns `true` if AVX2 hardware acceleration is active.
+| Method | Description | Docs |
+|---|---|---|
+| `SIMD.findByte(ptr, length, target)` | Scans memory 32 bytes per cycle for target byte (AVX2). | [Reference](docs/REFERENCE.md) |
+| `SIMD.copy(src, dst, bytes)` | High-throughput 256-bit SIMD bulk memory copy. | [Reference](docs/REFERENCE.md) |
+| `SIMD.isAVX2Supported()` | Returns `true` if CPU AVX2 vector extensions are supported. | [Reference](docs/REFERENCE.md) |
 
 ---
 
