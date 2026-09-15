@@ -56,8 +56,8 @@ public class Demo {
 - [Performance Benchmarks](#performance-benchmarks)
 - [FastJava Native Memory Substrate](#fastjava-native-memory--hardware-substrate)
 - [API Quick Reference](#api-quick-reference)
-- [Installation](#installation)
 - [Technical Demos & Benchmarks](#technical-demos--benchmarks)
+- [Installation](#installation)
 - [Documentation](#documentation)
 - [Platform Support](#platform-support)
 - [License](#license)
@@ -122,6 +122,15 @@ JMH_SIMD.benchmarkAVX2FindByte               thrpt    2  19632.158          ops/
 | `SIMD.findByte(ptr, length, target)` | Scans memory 32 bytes per cycle for target byte (AVX2). | [Reference](docs/REFERENCE.md) |
 | `SIMD.copy(src, dst, bytes)` | High-throughput 256-bit SIMD bulk memory copy. | [Reference](docs/REFERENCE.md) |
 | `SIMD.isAVX2Supported()` | Returns `true` if CPU AVX2 vector extensions are supported. | [Reference](docs/REFERENCE.md) |
+
+---
+
+## Technical Demos & Benchmarks
+
+| Case | Java Example | Launcher | Description |
+|---|---|---|---|
+| **AVX2 SIMD Parallel Search** | [Demo.java](examples/Demo.java) | `run-demo.bat` | End-to-end 100 MB streaming comparison matching delimiters via 256-bit AVX2 vector instructions vs scalar Java loops. |
+| **JMH Microbenchmark Suite** | [Benchmark.java](examples/Benchmark/src/main/java/fastsimd/benchmark/Benchmark.java) | `run-benchmark.bat` | OpenJDK JMH throughput & latency test suite for SIMD byte scanning and vectorized off-heap memory copies. |
 
 ---
 
@@ -196,15 +205,6 @@ Download the latest JARs directly to add them to your classpath:
 
 > [!IMPORTANT]
 > All JARs must be in your classpath for the JNI calls to function correctly.
-
----
-
-## Technical Demos & Benchmarks
-
-| Case | Java Example | Launcher | Description |
-|---|---|---|---|
-| **AVX2 SIMD Parallel Search** | [Demo.java](examples/Demo.java) | `run-demo.bat` | End-to-end 100 MB streaming comparison matching delimiters via 256-bit AVX2 vector instructions vs scalar Java loops. |
-| **JMH Microbenchmark Suite** | [Benchmark.java](examples/Benchmark/src/main/java/fastsimd/benchmark/Benchmark.java) | `run-benchmark.bat` | OpenJDK JMH throughput & latency test suite for SIMD byte scanning and vectorized off-heap memory copies. |
 
 ---
 
