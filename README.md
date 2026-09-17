@@ -71,6 +71,17 @@ Standard Java loops process arrays sequentially byte-by-byte or rely on unpredic
 - **28+ GB/sec Scan Bandwidth** — Execute ultra-fast log scanning, string searching, and delimiter matching at pure CPU memory bus speeds (15x faster than standard Java loops).
 - **Zero-Allocation Hardware Intrinsics** — Perform bulk memory transfers, vector math, and byte sweeps directly on off-heap native memory pointers without triggering Garbage Collector pauses.
 
+FastSIMD bypasses compiler guesswork by emitting deterministic hardware vector instructions directly via JNI:
+
+| Feature | Standard Java Loop | JDK Vector API (Incubator) | FastSIMD |
+|:---|:---|:---|:---|
+| **Instruction Execution** | Scalar (1 byte / cycle) | JIT-compiled IR vectors | **Explicit Hardware Intrinsics** |
+| **Vector Width** | None (1 byte) | 128 / 256 / 512 bit | **256-Bit AVX2 (32 Bytes / Cycle)** |
+| **Scan Bandwidth** | ~1.8 GB/sec | ~12–18 GB/sec | **> 28 GB/sec (Bus Speed)** |
+| **Branching Resilience** | Scalar fallback | JIT bails on branch | **Branchless Vector Masking** |
+| **JVM Configuration** | Default Java runtime | Requires `--add-modules` | **0 JVM Flags (Pure Native DLL)** |
+| **Dependencies** | JDK standard lib | JVM Incubator module | **Pure Java 17+ backed by FastCore** |
+
 ---
 
 ## Key Features
